@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "136687993861",
+    "firebase_url": "https://appmaintenance-6fa2a.firebaseio.com",
+    "project_id": "appmaintenance-6fa2a",
+    "storage_bucket": "appmaintenance-6fa2a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:136687993861:android:bd804bd89d4f4df644c86c",
+        "android_client_info": {
+          "package_name": "com.example.appmaintenance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "136687993861-cvbe8hml9vkiretd73hpj9mnhok1mp96.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.appmaintenance",
+            "certificate_hash": "0d5da9746b7546f82daa40d37e6870877f94f5eb"
+          }
+        },
+        {
+          "client_id": "136687993861-kccoif5mnm15k94i1fu0qli9sp6v3auh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkBK6tJdbgDg4cWumZ2ksEgAdTlw6KBTU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "136687993861-kccoif5mnm15k94i1fu0qli9sp6v3auh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

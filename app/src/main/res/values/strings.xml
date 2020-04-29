@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AppMaintenance</string>
+
+    <string-array name="level_array">
+        <item>Choose Level</item>
+        <item>Maintenance</item>
+        <item>Responsible</item>
+        <item>Student</item>
+    </string-array>
+
+</resources>
