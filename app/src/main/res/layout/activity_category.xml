@@ -4,37 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".mainMaintenance">
+    android:layout_gravity="center"
+    android:orientation="horizontal"
+    tools:context=".ActivityCategory">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="10"
+        android:layout_weight="5"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textviewName"
+            android:id="@+id/textView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="bottom"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textColor="@color/VeryDarkGrey" />
+            android:text="Category" />
 
-        <TextView
+        <Space
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="bottom"
-            android:text="Complaint List:"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textColor="@color/VeryDarkGrey" />
+            android:layout_weight="11" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="2"
+        android:layout_weight="3"
         android:orientation="vertical">
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <ListView
             android:id="@+id/lv"

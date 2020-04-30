@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,13 +22,16 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import static com.example.appmaintenance.FBreff.mAuth;
+import static com.example.appmaintenance.FBreff.refAre;
+import static com.example.appmaintenance.FBreff.refCat;
 import static com.example.appmaintenance.FBreff.refCom;
 import static com.example.appmaintenance.FBreff.refUsers;
 
-public class mainMaintenance extends AppCompatActivity implements AdapterView.OnItemSelectedListener,AdapterView.OnItemClickListener{
+public class mainMaintenance extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
     ListView lv;
     TextView textviewName;
+    Spinner spinner1,spinner2;
 
     ArrayList<String> title1 = new ArrayList<>();
     ArrayList<String>title2 = new ArrayList<>();
@@ -35,12 +39,16 @@ public class mainMaintenance extends AppCompatActivity implements AdapterView.On
     ArrayList<Boolean>check1 = new ArrayList<>();
     ArrayList<Boolean>check2 = new ArrayList<>();
 
+    ArrayList<String> aa1 = new ArrayList<>();
+    ArrayList<String> aa2 = new ArrayList<>();
     ArrayList<Complain> comValue = new ArrayList<>();
     ArrayList<String> cValue = new ArrayList<>();
+    ArrayList<String> bb = new ArrayList<>();
 
 
-    String str1, str2,uid,value2;
-    int str4,str3,i;
+    String str1, str2,uid,value2,str5,str6,category,category1;
+    int str3,i;
+    int str4;
 
     int value1;
     Intent t;
@@ -134,14 +142,8 @@ public class mainMaintenance extends AppCompatActivity implements AdapterView.On
         Intent a;
         a = new Intent (mainMaintenance.this, complaintPage.class);
         a.putExtra("name",text);
+        a.putExtra("screen","0");
         startActivity(a);
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-    }
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
     }
 
     @Override
@@ -168,5 +170,4 @@ public class mainMaintenance extends AppCompatActivity implements AdapterView.On
         }
         return true;
     }
-
 }

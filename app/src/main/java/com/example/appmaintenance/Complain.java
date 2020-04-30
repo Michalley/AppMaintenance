@@ -7,7 +7,7 @@ public class Complain {
     public String time;
     public String category;
     public String zone;
-    public int emergency;
+    public int emergency; //false=emergency   true=not emergency
     public int state;
     public String notes;
     public String name;

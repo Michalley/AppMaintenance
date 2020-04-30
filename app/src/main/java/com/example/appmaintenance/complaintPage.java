@@ -26,8 +26,8 @@ import static com.example.appmaintenance.FBreff.refHis;
 
 public class complaintPage extends AppCompatActivity {
 
-    String user,date,time,category,zone,notes,name,pic;
-    int emergency,state;
+    String user,date,time,category,zone,notes,name,pic,l;
+    int state,emergency;
 
     EditText etNO;
     TextView tvD, tvT,tvAre,tvCat,tvC;
@@ -35,7 +35,7 @@ public class complaintPage extends AppCompatActivity {
     RadioGroup rg;
     RadioButton rb3,rb4,rb5;
 
-    Intent gi,t;
+    Intent gi,t,ti;
 
 
     @Override
@@ -57,6 +57,7 @@ public class complaintPage extends AppCompatActivity {
 
         gi = getIntent();
         name = gi.getStringExtra("name");
+        l = gi.getStringExtra("screen");
         refCom.child(name).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -96,6 +97,8 @@ public class complaintPage extends AppCompatActivity {
             rb4.setChecked(false);
             rb3.setChecked(false);
         }
+
+        //Toast.makeText(complaintPage.this,l,Toast.LENGTH_SHORT);
     }
 
     private void Download(){
@@ -119,8 +122,16 @@ public class complaintPage extends AppCompatActivity {
     }
 
     public void Back(View view) {
-        Intent t = new Intent (complaintPage.this, mainMaintenance.class);
-        startActivity(t);
+        if (l.equals("0")) {
+            ti = new Intent(complaintPage.this, mainMaintenance.class);
+        }
+        if (l.equals("1")){
+            ti = new Intent(complaintPage.this, ActivityArea.class);
+        }
+        if (l.equals("2")){
+            ti = new Intent(complaintPage.this, ActivityCategory.class);
+        }
+        startActivity(ti);
     }
 
     public void save(View view) {

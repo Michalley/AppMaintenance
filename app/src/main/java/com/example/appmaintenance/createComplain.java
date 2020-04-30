@@ -85,6 +85,8 @@ public class createComplain extends AppCompatActivity implements AdapterView.OnI
         rb1 = (RadioButton) findViewById(R.id.rb1);
         rb2 = (RadioButton) findViewById(R.id.rb2);
 
+        rb2.setChecked(true);
+
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
         time = format.format(calendar.getTime());
@@ -98,8 +100,6 @@ public class createComplain extends AppCompatActivity implements AdapterView.OnI
         fillSpinnerA();
         fillSpinnerC();
         getUser();
-
-        rb2.setChecked(true);
 
         ivC.setOnClickListener(new View.OnClickListener() {
             @Override
