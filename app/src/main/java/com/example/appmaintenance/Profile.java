@@ -74,6 +74,10 @@ public class Profile extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add("History");
+        if (value1==1) {
+            menu.add("Category");
+            menu.add("Area");
+        }
         menu.add("Back To Main");
         menu.add("Credits");
         return true;
@@ -89,6 +93,16 @@ public class Profile extends AppCompatActivity {
         if (st.equals("Credits")) {
             Toast.makeText(this, "Credits", Toast.LENGTH_LONG).show();
         }
+
+        if (st.equals("Category")) {
+            t = new Intent(this,ActivityCategory.class);
+            startActivity(t);
+        }
+        if (st.equals("Area")) {
+            t = new Intent(this,ActivityArea.class);
+            startActivity(t);
+        }
+
         if (st.equals("Back To Main")) {
             if (value1 == 1) {
                 t = new Intent(this, mainMaintenance.class);

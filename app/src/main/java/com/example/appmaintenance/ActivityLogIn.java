@@ -40,6 +40,7 @@ public class ActivityLogIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
+        getSupportActionBar().hide();
 
         etE = (EditText) findViewById(R.id.etE);
         etP = (EditText) findViewById(R.id.etP);

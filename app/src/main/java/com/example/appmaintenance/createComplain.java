@@ -45,24 +45,123 @@ import static com.example.appmaintenance.FBreff.refCat;
 import static com.example.appmaintenance.FBreff.refCom;
 import static com.example.appmaintenance.FBreff.refUsers;
 
+/**
+ * The type Create complain.
+ */
 public class createComplain extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private static final int PICK_IMAGE = 100;
 
-    EditText etN, etNO;
+    /**
+     * The Et n.
+     */
+    EditText etN, /**
+     * The Et no.
+     */
+    etNO;
+    /**
+     * The Layout.
+     */
     LinearLayout layout;
-    TextView tvD, tvT;
+    /**
+     * The Tv d.
+     */
+    TextView tvD, /**
+     * The Tv t.
+     */
+    tvT;
+    /**
+     * The Iv c.
+     */
     ImageView ivC;
+    /**
+     * The Rg.
+     */
     RadioGroup rg;
-    RadioButton rb1,rb2;
-    Spinner spAr,spCat;
+    /**
+     * The Rb 1.
+     */
+    RadioButton rb1, /**
+     * The Rb 2.
+     */
+    rb2;
+    /**
+     * The Sp ar.
+     */
+    Spinner spAr, /**
+     * The Sp cat.
+     */
+    spCat;
+    /**
+     * The Image data.
+     */
     Uri ImageData;
+    /**
+     * The T.
+     */
     Intent t;
 
-    String date,time,category,zone,note,name,value1,value2,user,uid,pic,st1,st2;
-    int state,emergency,position1,position2;
+    /**
+     * The Date.
+     */
+    String date, /**
+     * The Time.
+     */
+    time, /**
+     * The Category.
+     */
+    category, /**
+     * The Zone.
+     */
+    zone, /**
+     * The Note.
+     */
+    note, /**
+     * The Name.
+     */
+    name, /**
+     * The Value 1.
+     */
+    value1, /**
+     * The Value 2.
+     */
+    value2, /**
+     * The User.
+     */
+    user, /**
+     * The Uid.
+     */
+    uid, /**
+     * The Pic.
+     */
+    pic, /**
+     * The St 1.
+     */
+    st1, /**
+     * The St 2.
+     */
+    st2;
+    /**
+     * The State.
+     */
+    int state, /**
+     * The Emergency.
+     */
+    emergency, /**
+     * The Position 1.
+     */
+    position1, /**
+     * The Position 2.
+     */
+    position2;
 
+    /**
+     * The Aa 1.
+     */
     ArrayList<String> aa1 = new ArrayList<>();
+    /**
+     * The Aa 2.
+     */
     ArrayList<String> aa2 = new ArrayList<>();
 
 
@@ -84,6 +183,8 @@ public class createComplain extends AppCompatActivity implements AdapterView.OnI
         rg = (RadioGroup) findViewById(R.id.rg1);
         rb1 = (RadioButton) findViewById(R.id.rb1);
         rb2 = (RadioButton) findViewById(R.id.rb2);
+
+        getSupportActionBar().hide();
 
         rb2.setChecked(true);
 
@@ -150,6 +251,9 @@ public class createComplain extends AppCompatActivity implements AdapterView.OnI
         }
     }
 
+    /**
+     * Fill spinner area.
+     */
     public void fillSpinnerA (){
         refAre.addValueEventListener(new ValueEventListener() {
             @Override
@@ -168,6 +272,9 @@ public class createComplain extends AppCompatActivity implements AdapterView.OnI
         });
     }
 
+    /**
+     * Fill spinner category.
+     */
     public void fillSpinnerC () {
         refCat.addValueEventListener(new ValueEventListener() {
             @Override
@@ -187,6 +294,9 @@ public class createComplain extends AppCompatActivity implements AdapterView.OnI
     }
 
 
+    /**
+     * Gets user.
+     */
     public void getUser() {
         uid = mAuth.getInstance().getCurrentUser().getUid();
         refUsers.child(uid).addValueEventListener(new ValueEventListener() {
@@ -205,6 +315,11 @@ public class createComplain extends AppCompatActivity implements AdapterView.OnI
         });
     }
 
+    /**
+     * Save.
+     *
+     * @param view the view
+     */
     public void save(View view) {
 
         name = etN.getText().toString();
@@ -241,11 +356,30 @@ public class createComplain extends AppCompatActivity implements AdapterView.OnI
 
     }
 
+    /**
+     * Write data base.
+     *
+     * @param user      the user
+     * @param date      the date
+     * @param time      the time
+     * @param category  the category
+     * @param zone      the zone
+     * @param emergency the emergency
+     * @param state     the state
+     * @param note      the note
+     * @param name      the name
+     * @param pic       the pic
+     */
     public void WriteDataBase(String user,String date,String time,String category,String zone,int emergency,int state,String note,String name,String pic) {
         Complain c = new Complain(user,date,time,category,zone,emergency,state,note,name,pic);
         refCom.child(name).setValue(c);
     }
 
+    /**
+     * Back.
+     *
+     * @param view the view
+     */
     public void Back(View view) {
         Intent t = new Intent (createComplain.this, mainRUser.class);
         startActivity(t);

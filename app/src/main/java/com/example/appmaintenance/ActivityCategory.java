@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,36 +26,111 @@ import static com.example.appmaintenance.FBreff.refCat;
 import static com.example.appmaintenance.FBreff.refCom;
 import static com.example.appmaintenance.FBreff.refUsers;
 
+/**
+ * The type Activity category.
+ */
 public class ActivityCategory extends AppCompatActivity implements AdapterView.OnItemSelectedListener,AdapterView.OnItemClickListener {
 
+    /**
+     * The Spinner.
+     */
     Spinner spinner;
+    /**
+     * The Lv.
+     */
     ListView lv;
 
+    /**
+     * The Tv.
+     */
     TextView tv;
 
+    /**
+     * The Alp values 1.
+     */
     ArrayList<String> alpValues1 = new ArrayList<String>();
+    /**
+     * The C value.
+     */
     ArrayList<String> cValue = new ArrayList<>();
+    /**
+     * The Aa.
+     */
     ArrayList<String> aa = new ArrayList<>();
+    /**
+     * The Bb.
+     */
     ArrayList<String> bb = new ArrayList<>();
+    /**
+     * The Cc.
+     */
     ArrayList<String> cc = new ArrayList<>();
 
+    /**
+     * The Title 1.
+     */
     ArrayList<String> title1 = new ArrayList<>();
+    /**
+     * The Title 2.
+     */
     ArrayList<String>title2 = new ArrayList<>();
+    /**
+     * The Img.
+     */
     ArrayList<Integer>img = new ArrayList<>();
+    /**
+     * The Check 1.
+     */
     ArrayList<Boolean>check1 = new ArrayList<>();
+    /**
+     * The Check 2.
+     */
     ArrayList<Boolean>check2 = new ArrayList<>();
 
+    /**
+     * The Category.
+     */
     String category;
+    /**
+     * The Category 1.
+     */
     String category1;
+    /**
+     * The Uid.
+     */
     String uid;
+    /**
+     * The Str 1.
+     */
     String str1;
+    /**
+     * The Str 2.
+     */
     String str2;
+    /**
+     * The Str 3.
+     */
     int str3;
+    /**
+     * The Str 4.
+     */
     int str4;
-    int value1,i;
+    /**
+     * The Value 1.
+     */
+    int value1, /**
+     * The .
+     */
+    i;
 
+    /**
+     * The T.
+     */
     Intent t;
 
+    /**
+     * The Adp.
+     */
     ArrayAdapter<String> adp;
 
     @Override
@@ -79,6 +156,9 @@ public class ActivityCategory extends AppCompatActivity implements AdapterView.O
     }
 
 
+    /**
+     * Fill spinner c.
+     */
     public void fillSpinnerC () {
         refCat.addValueEventListener(new ValueEventListener() {
             @Override
@@ -97,6 +177,9 @@ public class ActivityCategory extends AppCompatActivity implements AdapterView.O
         });
     }
 
+    /**
+     * Fill list view.
+     */
     public void fillListView (){
         refCom.addValueEventListener(new ValueEventListener() {
             @Override
@@ -217,6 +300,9 @@ public class ActivityCategory extends AppCompatActivity implements AdapterView.O
         startActivity(a);
     }
 
+    /**
+     * Gets user.
+     */
     public void getUser() {
         uid = mAuth.getInstance().getCurrentUser().getUid();
         refUsers.child(uid).addValueEventListener(new ValueEventListener() {
@@ -230,6 +316,49 @@ public class ActivityCategory extends AppCompatActivity implements AdapterView.O
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add("History");
+        menu.add("Profile");
+        menu.add("Area");
+        menu.add("Back To Main");
+        menu.add("Credits");
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //activity menu selection
+        String st = item.getTitle().toString();
+        if (st.equals("Profile")) {
+            t = new Intent(this, Profile.class);
+            startActivity(t);
+        }
+        if (st.equals("Credits")) {
+            Toast.makeText(this, "Credits", Toast.LENGTH_LONG).show();
+        }
+
+        if (st.equals("Area")) {
+            t = new Intent(this,ActivityArea.class);
+            startActivity(t);
+        }
+        if (st.equals("History")) {
+            t = new Intent(this,History.class);
+            startActivity(t);
+        }
+
+        if (st.equals("Back To Main")) {
+            if (value1 == 1) {
+                t = new Intent(this, mainMaintenance.class);
+                startActivity(t);
+            }
+            if (value1==2 || value1==3){
+                t = new Intent(this, mainRUser.class);
+                startActivity(t);
+            }
+        }
+        return true;
     }
 
 }

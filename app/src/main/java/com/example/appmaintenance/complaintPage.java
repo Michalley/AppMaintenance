@@ -43,6 +43,8 @@ public class complaintPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complaint_page);
 
+        getSupportActionBar().hide();
+
         tvC = (TextView) findViewById(R.id.tvC);
         etNO = (EditText) findViewById(R.id.etNo);
         tvD = (TextView) findViewById(R.id.tvD);

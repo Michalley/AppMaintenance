@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -30,13 +32,14 @@ public class ActivityArea extends AppCompatActivity implements AdapterView.OnIte
     Spinner spinner;
     ListView lv;
 
+    Intent t;
+
     TextView tv;
 
     ArrayList<String> alpValues1 = new ArrayList<String>();
     ArrayList<String> cValue = new ArrayList<>();
     ArrayList<String> aa = new ArrayList<>();
     ArrayList<String> bb = new ArrayList<>();
-    ArrayList<String> cc = new ArrayList<>();
 
     ArrayList<String> title1 = new ArrayList<>();
     ArrayList<String>title2 = new ArrayList<>();
@@ -227,6 +230,49 @@ public class ActivityArea extends AppCompatActivity implements AdapterView.OnIte
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add("History");
+        menu.add("Profile");
+        menu.add("Category");
+        menu.add("Back To Main");
+        menu.add("Credits");
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //activity menu selection
+        String st = item.getTitle().toString();
+        if (st.equals("Profile")) {
+            t = new Intent(this, Profile.class);
+            startActivity(t);
+        }
+        if (st.equals("Credits")) {
+            Toast.makeText(this, "Credits", Toast.LENGTH_LONG).show();
+        }
+
+        if (st.equals("Category")) {
+            t = new Intent(this,ActivityCategory.class);
+            startActivity(t);
+        }
+        if (st.equals("History")) {
+            t = new Intent(this,History.class);
+            startActivity(t);
+        }
+
+        if (st.equals("Back To Main")) {
+            if (value1 == 1) {
+                t = new Intent(this, mainMaintenance.class);
+                startActivity(t);
+            }
+            if (value1==2 || value1==3){
+                t = new Intent(this, mainRUser.class);
+                startActivity(t);
+            }
+        }
+        return true;
     }
 
 }

@@ -38,7 +38,6 @@ public class mainRUser extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.textview);
 
         getUser();
-        //textView.setText("Hello "+value2);
 
         buttonCom.setOnClickListener(new View.OnClickListener() {
             @Override

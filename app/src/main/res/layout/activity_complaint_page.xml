@@ -125,12 +125,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="8.5"
+        android:layout_weight="8"
         android:orientation="horizontal">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <Button
             android:id="@+id/bnB"
-            android:layout_width="206dp"
+            android:layout_width="100dp"
             android:layout_height="35dp"
             android:background="@color/DarkGrey"
             android:onClick="Back"
@@ -138,17 +143,23 @@
             android:textColor="@color/Egg" />
 
         <Space
-            android:layout_width="15dp"
-            android:layout_height="wrap_content" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <Button
             android:id="@+id/bnS"
-            android:layout_width="206dp"
+            android:layout_width="100dp"
             android:layout_height="35dp"
             android:background="@color/DarkGrey"
             android:onClick="save"
             android:text="Save"
             android:textColor="@color/Egg" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
     </LinearLayout>
 
 </LinearLayout>

@@ -57,6 +57,8 @@ public class ActivityRegister extends AppCompatActivity implements AdapterView.O
         cb = (CheckBox) findViewById(R.id.cb);
         btnR = (Button) findViewById(R.id.btnR);
 
+        getSupportActionBar().hide();
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.level_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

@@ -30,7 +30,7 @@ public class History extends AppCompatActivity {
     ArrayList<String> cValue = new ArrayList<>();
 
     String str1,uid; int value1;
-    String value2,str2;
+    String value2,str2,value3;
 
     ArrayAdapter<String> adp;
 
@@ -40,8 +40,9 @@ public class History extends AppCompatActivity {
         setContentView(R.layout.activity_history);
 
         lv = (ListView) findViewById(R.id.lv);
-        fillListView();
         getUser();
+        fillListView();
+        setWhatList();
 
     }
 
@@ -55,10 +56,9 @@ public class History extends AppCompatActivity {
                     str1 = (String) data.getKey();
                     Complain c = dataSnapshot.getValue(Complain.class);
                     str2 = c.getUser();
-                    //cValue.add(str1);
                     setWhatList();
                 }
-                adp = new ArrayAdapter<String>(History.this,R.layout.support_simple_spinner_dropdown_item,cValue);
+                adp = new ArrayAdapter<String>(History.this, R.layout.support_simple_spinner_dropdown_item, cValue);
                 lv.setAdapter(adp);
             }
 
@@ -85,19 +85,30 @@ public class History extends AppCompatActivity {
     }
 
     public void setWhatList(){
-        if (value1==2 || value1==3){
-            if (value2==str2){
+        if (value1==2 ){
+            if (str2.equals(value2)) {
+                cValue.add(str1);
+            }
+        }
+        if (value1==3) {
+            if (str2.equals(value2)) {
                 cValue.add(str1);
             }
         }
         if (value1==1){
             cValue.add(str1);
         }
+        adp = new ArrayAdapter<String>(History.this, R.layout.support_simple_spinner_dropdown_item, cValue);
+        lv.setAdapter(adp);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add("Profile");
+        if (value1==1) {
+            menu.add("Category");
+            menu.add("Area");
+        }
         menu.add("Back To Main");
         menu.add("Credits");
         return true;
@@ -113,6 +124,16 @@ public class History extends AppCompatActivity {
         if (st.equals("Credits")) {
             Toast.makeText(this, "Credits", Toast.LENGTH_LONG).show();
         }
+
+        if (st.equals("Category")) {
+            t = new Intent(this,ActivityCategory.class);
+            startActivity(t);
+        }
+        if (st.equals("Area")) {
+            t = new Intent(this,ActivityArea.class);
+            startActivity(t);
+        }
+
         if (st.equals("Back To Main")) {
             if (value1 == 1) {
                 t = new Intent(this, mainMaintenance.class);

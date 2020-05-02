@@ -41,7 +41,7 @@
             android:layout_width="342dp"
             android:layout_height="439dp"
             android:layout_alignParentRight="true"
-            app:srcCompat="@drawable/complainbutton" />
+            app:srcCompat="@drawable/ic_build_black_24dp" />
 
     </RelativeLayout>
 </RelativeLayout>

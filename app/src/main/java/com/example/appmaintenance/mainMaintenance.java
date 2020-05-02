@@ -149,6 +149,8 @@ public class mainMaintenance extends AppCompatActivity implements AdapterView.On
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add("History");
+        menu.add("Category");
+        menu.add("Area");
         menu.add("Profile");
         menu.add("Credits");
         return true;
@@ -167,6 +169,14 @@ public class mainMaintenance extends AppCompatActivity implements AdapterView.On
         }
         if (st.equals("Credits")) {
             Toast.makeText(this, "Credits", Toast.LENGTH_LONG).show();
+        }
+        if (st.equals("Category")) {
+            t = new Intent(this,ActivityCategory.class);
+            startActivity(t);
+        }
+        if (st.equals("Area")) {
+            t = new Intent(this,ActivityArea.class);
+            startActivity(t);
         }
         return true;
     }
