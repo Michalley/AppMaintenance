@@ -24,15 +24,51 @@ import com.google.firebase.database.ValueEventListener;
 import static com.example.appmaintenance.FBreff.mAuth;
 import static com.example.appmaintenance.FBreff.refUsers;
 
+/**
+ * The type Activity log in.
+ */
 public class ActivityLogIn extends AppCompatActivity {
 
+    /**
+     * The Si.
+     */
     Intent si;
 
-    EditText etE, etP;
+    /**
+     * The Et e.
+     */
+    EditText etE, /**
+     * The Et p.
+     */
+    etP;
+    /**
+     * The Cb.
+     */
     CheckBox cb;
+    /**
+     * The Btn li.
+     */
     Button btnLI;
-    String email,password,checkuid,value;
+    /**
+     * The Email.
+     */
+    String email, /**
+     * The Password.
+     */
+    password, /**
+     * The Checkuid.
+     */
+    checkuid, /**
+     * The Value.
+     */
+    value;
+    /**
+     * The Level.
+     */
     int level;
+    /**
+     * The U.
+     */
     User u;
 
     @Override
@@ -87,6 +123,11 @@ public class ActivityLogIn extends AppCompatActivity {
         finish();
     }
 
+    /**
+     * Login.
+     *
+     * @param view the view
+     */
     public void login(View view) {
         email = etE.getText().toString();
         password = etP.getText().toString();
@@ -140,6 +181,11 @@ public class ActivityLogIn extends AppCompatActivity {
                 });
     }
 
+    /**
+     * Go register.
+     *
+     * @param view the view
+     */
     public void GoRegister(View view) {
         si = new Intent(ActivityLogIn.this,ActivityRegister.class);
         startActivity(si);

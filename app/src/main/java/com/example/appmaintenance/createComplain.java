@@ -242,7 +242,6 @@ public class createComplain extends AppCompatActivity implements AdapterView.OnI
                         @Override
                         public void onSuccess(Uri uri) {
                             pic = String.valueOf(uri);
-                            Toast.makeText(createComplain.this,pic,Toast.LENGTH_SHORT).show();
                         }
                     });
 

@@ -21,17 +21,47 @@ import static com.example.appmaintenance.FBreff.mAuth;
 import static com.example.appmaintenance.FBreff.refHis;
 import static com.example.appmaintenance.FBreff.refUsers;
 
+/**
+ * The type History.
+ */
 public class History extends AppCompatActivity {
 
+    /**
+     * The Lv.
+     */
     ListView lv;
 
+    /**
+     * The T.
+     */
     Intent t;
 
+    /**
+     * The C value.
+     */
     ArrayList<String> cValue = new ArrayList<>();
 
-    String str1,uid; int value1;
-    String value2,str2,value3;
+    /**
+     * The Str 1.
+     */
+    String str1, /**
+     * The Uid.
+     */
+    uid, /**
+     * The Value 2.
+     */
+    value2, /**
+     * The Str 2.
+     */
+    str2;
+    /**
+     * The Value 1.
+     */
+    int value1;
 
+    /**
+     * The Adp.
+     */
     ArrayAdapter<String> adp;
 
     @Override
@@ -47,6 +77,9 @@ public class History extends AppCompatActivity {
     }
 
 
+    /**
+     * Fill list view.
+     */
     public void fillListView (){
         refHis.addValueEventListener(new ValueEventListener() {
             @Override
@@ -68,6 +101,9 @@ public class History extends AppCompatActivity {
         });
     }
 
+    /**
+     * Gets user.
+     */
     public void getUser() {
         uid = mAuth.getInstance().getCurrentUser().getUid();
         refUsers.child(uid).addValueEventListener(new ValueEventListener() {
@@ -84,6 +120,9 @@ public class History extends AppCompatActivity {
         });
     }
 
+    /**
+     * Set what list.
+     */
     public void setWhatList(){
         if (value1==2 ){
             if (str2.equals(value2)) {

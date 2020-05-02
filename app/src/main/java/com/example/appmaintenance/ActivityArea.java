@@ -27,34 +27,97 @@ import static com.example.appmaintenance.FBreff.refCat;
 import static com.example.appmaintenance.FBreff.refCom;
 import static com.example.appmaintenance.FBreff.refUsers;
 
+/**
+ * The type Activity area.
+ */
 public class ActivityArea extends AppCompatActivity implements AdapterView.OnItemSelectedListener,AdapterView.OnItemClickListener {
 
+    /**
+     * The Spinner.
+     */
     Spinner spinner;
+    /**
+     * The Lv.
+     */
     ListView lv;
 
+    /**
+     * The T.
+     */
     Intent t;
 
+    /**
+     * The Tv.
+     */
     TextView tv;
 
+    /**
+     * The Alp values 1.
+     */
     ArrayList<String> alpValues1 = new ArrayList<String>();
+    /**
+     * The C value.
+     */
     ArrayList<String> cValue = new ArrayList<>();
+    /**
+     * The Aa.
+     */
     ArrayList<String> aa = new ArrayList<>();
+    /**
+     * The Bb.
+     */
     ArrayList<String> bb = new ArrayList<>();
 
+    /**
+     * The Title 1.
+     */
     ArrayList<String> title1 = new ArrayList<>();
+    /**
+     * The Title 2.
+     */
     ArrayList<String>title2 = new ArrayList<>();
+    /**
+     * The Img.
+     */
     ArrayList<Integer>img = new ArrayList<>();
+    /**
+     * The Check 1.
+     */
     ArrayList<Boolean>check1 = new ArrayList<>();
+    /**
+     * The Check 2.
+     */
     ArrayList<Boolean>check2 = new ArrayList<>();
 
-    String area;
-    String area1;
-    String uid;
-    String str1;
-    String str2;
-    int str3;
-    int str4;
-    int value1,i;
+    /**
+     * The Area.
+     */
+    String area, /**
+     * The Area 1.
+     */
+    area1, /**
+     * The Uid.
+     */
+    uid, /**
+     * The Str 1.
+     */
+    str1, /**
+     * The Str 2.
+     */
+    str2;
+    /**
+     * The Str 3.
+     */
+    int str3, /**
+     * The Str 4.
+     */
+    str4, /**
+     * The Value 1.
+     */
+    value1, /**
+     * The .
+     */
+    i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,11 +136,13 @@ public class ActivityArea extends AppCompatActivity implements AdapterView.OnIte
         lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
         fillSpinnerA();
-        //fillListView();
         getUser();
 
     }
 
+    /**
+     * Fill spinner area.
+     */
     public void fillSpinnerA () {
         refAre.addValueEventListener(new ValueEventListener() {
             @Override
@@ -96,6 +161,9 @@ public class ActivityArea extends AppCompatActivity implements AdapterView.OnIte
         });
     }
 
+    /**
+     * Fill listview.
+     */
     public void fillListView (){
         refCom.addValueEventListener(new ValueEventListener() {
             @Override
@@ -108,7 +176,6 @@ public class ActivityArea extends AppCompatActivity implements AdapterView.OnIte
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     str1 = (String) data.getKey();
                     Complain complain =data.getValue(Complain.class);
-                    //comValue.add(complain);
                     str2 = complain.getDate()+"     "+complain.getTime();
                     str3 = complain.getState();
                     str4 = complain.getEmergency();
@@ -144,8 +211,6 @@ public class ActivityArea extends AppCompatActivity implements AdapterView.OnIte
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         bb.clear();
         area = spinner.getSelectedItem().toString();
-
-        Toast.makeText(ActivityArea.this,area,Toast.LENGTH_SHORT).show();
 
         if (parent.getId()==spinner.getId()) {
             if (area != spinner.getItemAtPosition(0).toString()) {
@@ -186,9 +251,6 @@ public class ActivityArea extends AppCompatActivity implements AdapterView.OnIte
                                 bb.add(str1);
                             }
                         }
-                        //adp = new ArrayAdapter<String>(ActivityCategory.this,R.layout.support_simple_spinner_dropdown_item,bb);
-                        //lv.setAdapter(adp);
-                        //Toast.makeText(ActivityCategory.this,,Toast.LENGTH_SHORT).show();
                         DataAdapter adapter=new DataAdapter(ActivityArea.this, title1, title2,check1,check2);
                         lv.setAdapter(adapter);
                     }
@@ -217,6 +279,9 @@ public class ActivityArea extends AppCompatActivity implements AdapterView.OnIte
         startActivity(a);
     }
 
+    /**
+     * Gets user.
+     */
     public void getUser() {
         uid = mAuth.getInstance().getCurrentUser().getUid();
         refUsers.child(uid).addValueEventListener(new ValueEventListener() {

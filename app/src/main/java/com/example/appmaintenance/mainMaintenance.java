@@ -27,34 +27,80 @@ import static com.example.appmaintenance.FBreff.refCat;
 import static com.example.appmaintenance.FBreff.refCom;
 import static com.example.appmaintenance.FBreff.refUsers;
 
+/**
+ * The type Main maintenance.
+ */
 public class mainMaintenance extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
+    /**
+     * The Lv.
+     */
     ListView lv;
+    /**
+     * The Textview name.
+     */
     TextView textviewName;
-    Spinner spinner1,spinner2;
 
+    /**
+     * The Title 1.
+     */
     ArrayList<String> title1 = new ArrayList<>();
+    /**
+     * The Title 2.
+     */
     ArrayList<String>title2 = new ArrayList<>();
+    /**
+     * The Img.
+     */
     ArrayList<Integer>img = new ArrayList<>();
+    /**
+     * The Check 1.
+     */
     ArrayList<Boolean>check1 = new ArrayList<>();
+    /**
+     * The Check 2.
+     */
     ArrayList<Boolean>check2 = new ArrayList<>();
 
-    ArrayList<String> aa1 = new ArrayList<>();
-    ArrayList<String> aa2 = new ArrayList<>();
+    /**
+     * The Com value.
+     */
     ArrayList<Complain> comValue = new ArrayList<>();
-    ArrayList<String> cValue = new ArrayList<>();
-    ArrayList<String> bb = new ArrayList<>();
 
-
-    String str1, str2,uid,value2,str5,str6,category,category1;
-    int str3,i;
+    /**
+     * The Str 1.
+     */
+    String str1, /**
+     * The Str 2.
+     */
+    str2, /**
+     * The Uid.
+     */
+    uid, /**
+     * The Value 2.
+     */
+    value2;
+    /**
+     * The Str 3.
+     */
+    int str3, /**
+     * The .
+     */
+    i;
+    /**
+     * The Str 4.
+     */
     int str4;
 
+    /**
+     * The Value 1.
+     */
     int value1;
+    /**
+     * The T.
+     */
     Intent t;
 
-    ArrayAdapter<String> adp;
-    DataAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +119,9 @@ public class mainMaintenance extends AppCompatActivity implements AdapterView.On
 
     }
 
+    /**
+     * Fill list view.
+     */
     public void fillListView (){
         refCom.addValueEventListener(new ValueEventListener() {
             @Override
@@ -107,10 +156,8 @@ public class mainMaintenance extends AppCompatActivity implements AdapterView.On
                     }
 
                 }
-
                 DataAdapter adapter=new DataAdapter(mainMaintenance.this, title1, title2,check1,check2);
                 lv.setAdapter(adapter);
-
             }
 
             @Override
@@ -119,6 +166,9 @@ public class mainMaintenance extends AppCompatActivity implements AdapterView.On
         });
     }
 
+    /**
+     * Gets user.
+     */
     public void getUser() {
         uid = mAuth.getInstance().getCurrentUser().getUid();
         refUsers.child(uid).addValueEventListener(new ValueEventListener() {

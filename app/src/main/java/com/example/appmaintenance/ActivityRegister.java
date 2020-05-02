@@ -29,17 +29,77 @@ import com.google.firebase.database.ValueEventListener;
 import static com.example.appmaintenance.FBreff.mAuth;
 import static com.example.appmaintenance.FBreff.refUsers;
 
+/**
+ * The type Activity register.
+ */
 public class ActivityRegister extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
 
+    /**
+     * The Si.
+     */
     Intent si;
 
-    EditText etN, etFN, etE, etP, etPN;
+    /**
+     * The Et n.
+     */
+    EditText etN, /**
+     * The Et fn.
+     */
+    etFN, /**
+     * The Et e.
+     */
+    etE, /**
+     * The Et p.
+     */
+    etP, /**
+     * The Et pn.
+     */
+    etPN;
+    /**
+     * The Sp.
+     */
     Spinner sp;
+    /**
+     * The Cb.
+     */
     CheckBox cb;
+    /**
+     * The Btn r.
+     */
     Button btnR;
-    String name,lastName,email,phone,password,uid,checkuid,value;
+    /**
+     * The Name.
+     */
+    String name, /**
+     * The Last name.
+     */
+    lastName, /**
+     * The Email.
+     */
+    email, /**
+     * The Phone.
+     */
+    phone, /**
+     * The Password.
+     */
+    password, /**
+     * The Uid.
+     */
+    uid, /**
+     * The Checkuid.
+     */
+    checkuid, /**
+     * The Value.
+     */
+    value;
+    /**
+     * The Level.
+     */
     int level;
+    /**
+     * The U.
+     */
     User u;
 
     @Override
@@ -68,44 +128,11 @@ public class ActivityRegister extends AppCompatActivity implements AdapterView.O
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        SharedPreferences settings=getSharedPreferences("PREFS_NAME",0);
-        Boolean isChecked=settings.getBoolean("isChecked",false);
-        checkuid=mAuth.getUid();
-        if (mAuth.getCurrentUser()!=null && isChecked) {
-            refUsers.child(checkuid).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    value = String.valueOf(dataSnapshot.child("level").getValue());
-                    if (value=="1"){
-                        si = new Intent(ActivityRegister.this, mainMaintenance.class);
-                        si.putExtra("level",value);
-                        startActivity(si);
-                    }
-                    if ((value=="2")||(value=="3")){
-                        si = new Intent(ActivityRegister.this,mainRUser.class);
-                        si.putExtra("level",value);
-                        startActivity(si);
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-        }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        finish();
-    }
-
-
+    /**
+     * Register.
+     *
+     * @param view the view
+     */
     public void register(View view) {
         name=etN.getText().toString();
         phone=etPN.getText().toString();
@@ -173,6 +200,11 @@ public class ActivityRegister extends AppCompatActivity implements AdapterView.O
     public void onNothingSelected(AdapterView<?> parent) { }
 
 
+    /**
+     * Go sign in.
+     *
+     * @param view the view
+     */
     public void GoSignIn(View view) {
         si = new Intent(ActivityRegister.this,ActivityLogIn.class);
         startActivity(si);

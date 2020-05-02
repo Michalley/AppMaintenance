@@ -24,18 +24,96 @@ import com.squareup.picasso.Picasso;
 import static com.example.appmaintenance.FBreff.refCom;
 import static com.example.appmaintenance.FBreff.refHis;
 
+/**
+ * The type Complaint page.
+ */
 public class complaintPage extends AppCompatActivity {
 
-    String user,date,time,category,zone,notes,name,pic,l;
-    int state,emergency;
+    /**
+     * The User.
+     */
+    String user, /**
+     * The Date.
+     */
+    date, /**
+     * The Time.
+     */
+    time, /**
+     * The Category.
+     */
+    category, /**
+     * The Zone.
+     */
+    zone, /**
+     * The Notes.
+     */
+    notes, /**
+     * The Name.
+     */
+    name, /**
+     * The Pic.
+     */
+    pic, /**
+     * The L.
+     */
+    l;
+    /**
+     * The State.
+     */
+    int state, /**
+     * The Emergency.
+     */
+    emergency;
 
+    /**
+     * The Et no.
+     */
     EditText etNO;
-    TextView tvD, tvT,tvAre,tvCat,tvC;
+    /**
+     * The Tv d.
+     */
+    TextView tvD, /**
+     * The Tv t.
+     */
+    tvT, /**
+     * The Tv are.
+     */
+    tvAre, /**
+     * The Tv cat.
+     */
+    tvCat, /**
+     * The Tv c.
+     */
+    tvC;
+    /**
+     * The Iv c.
+     */
     ImageView ivC;
+    /**
+     * The Rg.
+     */
     RadioGroup rg;
-    RadioButton rb3,rb4,rb5;
+    /**
+     * The Rb 3.
+     */
+    RadioButton rb3, /**
+     * The Rb 4.
+     */
+    rb4, /**
+     * The Rb 5.
+     */
+    rb5;
 
-    Intent gi,t,ti;
+    /**
+     * The Gi.
+     */
+    Intent gi, /**
+     * The T.
+     */
+    t, /**
+     * The Ti.
+     */
+    ti;
 
 
     @Override
@@ -75,7 +153,6 @@ public class complaintPage extends AppCompatActivity {
                 pic = com.getPic();
                 tvC.setText(name);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -99,8 +176,6 @@ public class complaintPage extends AppCompatActivity {
             rb4.setChecked(false);
             rb3.setChecked(false);
         }
-
-        //Toast.makeText(complaintPage.this,l,Toast.LENGTH_SHORT);
     }
 
     private void Download(){
@@ -123,6 +198,11 @@ public class complaintPage extends AppCompatActivity {
         });
     }
 
+    /**
+     * Back.
+     *
+     * @param view the view
+     */
     public void Back(View view) {
         if (l.equals("0")) {
             ti = new Intent(complaintPage.this, mainMaintenance.class);
@@ -136,6 +216,11 @@ public class complaintPage extends AppCompatActivity {
         startActivity(ti);
     }
 
+    /**
+     * Save.
+     *
+     * @param view the view
+     */
     public void save(View view) {
         notes = etNO.getText().toString();
         if (rb3.isChecked()){

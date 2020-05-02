@@ -20,13 +20,37 @@ import com.google.firebase.database.ValueEventListener;
 import static com.example.appmaintenance.FBreff.mAuth;
 import static com.example.appmaintenance.FBreff.refUsers;
 
+/**
+ * The type Main r user.
+ */
 public class mainRUser extends AppCompatActivity {
 
+    /**
+     * The Button com.
+     */
     ImageView buttonCom;
+    /**
+     * The Text view.
+     */
     TextView textView;
+    /**
+     * The .
+     */
     Intent i;
-    String uid;
-    int value1;String value2;
+    /**
+     * The Uid.
+     */
+    String uid, /**
+     * The Value 2.
+     */
+    value2;
+    /**
+     * The Value 1.
+     */
+    int value1;
+    /**
+     * The T.
+     */
     Intent t;
 
     @Override
@@ -49,6 +73,9 @@ public class mainRUser extends AppCompatActivity {
 
     }
 
+    /**
+     * Gets user.
+     */
     public void getUser() {
         uid = mAuth.getInstance().getCurrentUser().getUid();
         refUsers.child(uid).addValueEventListener(new ValueEventListener() {

@@ -39,11 +39,14 @@ public class ActivityCategory extends AppCompatActivity implements AdapterView.O
      * The Lv.
      */
     ListView lv;
-
     /**
      * The Tv.
      */
     TextView tv;
+    /**
+     * The T.
+     */
+    Intent t;
 
     /**
      * The Alp values 1.
@@ -61,10 +64,6 @@ public class ActivityCategory extends AppCompatActivity implements AdapterView.O
      * The Bb.
      */
     ArrayList<String> bb = new ArrayList<>();
-    /**
-     * The Cc.
-     */
-    ArrayList<String> cc = new ArrayList<>();
 
     /**
      * The Title 1.
@@ -90,48 +89,33 @@ public class ActivityCategory extends AppCompatActivity implements AdapterView.O
     /**
      * The Category.
      */
-    String category;
-    /**
+    String category, /**
      * The Category 1.
      */
-    String category1;
-    /**
+    category1, /**
      * The Uid.
      */
-    String uid;
-    /**
+    uid, /**
      * The Str 1.
      */
-    String str1;
-    /**
+    str1, /**
      * The Str 2.
      */
-    String str2;
+    str2;
     /**
      * The Str 3.
      */
-    int str3;
-    /**
+    int str3, /**
      * The Str 4.
      */
-    int str4;
-    /**
+    str4, /**
      * The Value 1.
      */
-    int value1, /**
+    value1, /**
      * The .
      */
     i;
 
-    /**
-     * The T.
-     */
-    Intent t;
-
-    /**
-     * The Adp.
-     */
-    ArrayAdapter<String> adp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,7 +126,6 @@ public class ActivityCategory extends AppCompatActivity implements AdapterView.O
         spinner.setOnItemSelectedListener(this);
         tv = (TextView) findViewById(R.id.textview);
 
-
         lv = (ListView) findViewById(R.id.lv);
         lv.setOnItemClickListener(this);
         lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -152,12 +135,11 @@ public class ActivityCategory extends AppCompatActivity implements AdapterView.O
         fillSpinnerC();
         fillListView();
         getUser();
-
     }
 
 
     /**
-     * Fill spinner c.
+     * Fill spinner category.
      */
     public void fillSpinnerC () {
         refCat.addValueEventListener(new ValueEventListener() {
@@ -178,7 +160,7 @@ public class ActivityCategory extends AppCompatActivity implements AdapterView.O
     }
 
     /**
-     * Fill list view.
+     * Fill listview.
      */
     public void fillListView (){
         refCom.addValueEventListener(new ValueEventListener() {
@@ -192,7 +174,6 @@ public class ActivityCategory extends AppCompatActivity implements AdapterView.O
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     str1 = (String) data.getKey();
                     Complain complain =data.getValue(Complain.class);
-                    //comValue.add(complain);
                     str2 = complain.getDate()+"     "+complain.getTime();
                     str3 = complain.getState();
                     str4 = complain.getEmergency();
@@ -213,7 +194,6 @@ public class ActivityCategory extends AppCompatActivity implements AdapterView.O
                     }
 
                 }
-
                 DataAdapter adapter=new DataAdapter(ActivityCategory.this, title1, title2,check1,check2);
                 lv.setAdapter(adapter);
             }
@@ -249,7 +229,6 @@ public class ActivityCategory extends AppCompatActivity implements AdapterView.O
                             if (category1.equals(category)){
                                 str2 = complain.getDate()+"     "+complain.getTime();
                                 str3 = complain.getState();
-                                //str4 = complain.getEmergency();
                                 title1.add(str1);
                                 title2.add(str2);
 
@@ -269,9 +248,6 @@ public class ActivityCategory extends AppCompatActivity implements AdapterView.O
                                 bb.add(str1);
                             }
                         }
-                        //adp = new ArrayAdapter<String>(ActivityCategory.this,R.layout.support_simple_spinner_dropdown_item,bb);
-                        //lv.setAdapter(adp);
-                        //Toast.makeText(ActivityCategory.this,,Toast.LENGTH_SHORT).show();
                         DataAdapter adapter=new DataAdapter(ActivityCategory.this, title1, title2,check1,check2);
                         lv.setAdapter(adapter);
                     }
